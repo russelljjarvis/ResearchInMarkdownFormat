@@ -77,12 +77,6 @@ A map is a model of structure
 ![width:200px center](tour_tempe.png)
 ---
 
-### Music notation is a map of when events occur.
-* When do drum beats occur 1 bar in in semi quartets?
-* when does cello occur four bars in, in crochets.
-![center](music_notation.png)
-
----
 
 ### Diverse Instruments Create Diverse Sounds
 ![width:180px center](diversity_of_voltages.jpg)
@@ -92,10 +86,13 @@ A map is a model of structure
 ---
 
 
-### Diverse Neurons Cause Diverse voltages
+### Diverse Neurons Create Diverse Voltage Patterns
 ![width:300px center](dendrites2.jpg)
-![width:280px center](Recordings-from-neurons-with-no-evidence-of-voltage-dependent-conductances-other-than.png)
+![width:480px center](diverse_dynamics.png)
 
+<!--
+![width:280px center](Recordings-from-neurons-with-no-evidence-of-voltage-dependent-conductances-other-than.png)
+-->
 
 
 
@@ -113,16 +110,18 @@ A map is a model of structure
 -->
 
 ---
-### Special neuronal models are "Tunable"
+### Special Neuron Models are "Tunable"
 <!--* Diverse neurons, are like choir participants, they have different temporal properties like an old smoker, or a young pure voice.-->
-![width:320px center](11freevariables.png)
-![width:270px center](synthesizer.png)
+![width:340px center](11freevariables.png)
+![width:340px center](synthesizer.png)
 
 
 ---
-
-### Virtual Experiments
+<!--
 ![width:275px center](figures/vclamp.png)
+-->
+### Virtual Experiments
+![width:275px center](neuron_schematic.png)
 * What they are and why?
 Many Electrical Neuron Models 
 are capable of simulation applied current injections at the cell soma.
@@ -135,6 +134,15 @@ important biological details they were intended to represent.
 * Virtual Experiments can help us to optimize.
 
 ---
+
+### Music Notation A map of When Sound Events occur.
+* I said that a map is a model
+* When do drum beats occur 1 bar in in semi crochets?
+* When does cello occur four bars in, in crochets.
+![center](music_notation.png)
+* Feature extraction libraries are a bit like music notation for neuron events.
+---
+
 ### Virtual Experiments Gather Useful Measurements: Features <!--fit--> 
 * These Measurements are collectively called Features.
 * Action Potential height as it varies along the spike train.
@@ -209,35 +217,43 @@ True solution inaccessible
 * both spike times and spike shape is matched
 * and noise is not fitted, its discarded
 * How well did I do?
+![center w:560 h:300](Iamp2.png)
+
 
 ---
 
 
 Identify the counterfit
 ========================================================
-![center](figures/adexp_fit_allen_spec_id_476053392.png)
+![center w:800 h:500](figures/adexp_fit_allen_spec_id_476053392.png)
 
 ---
 
 
-### Spot the fake
+### Identify the model
 
-![center](figures/adexp_fit_allen_specid_325479788.png)
-
----
-
-Identify the counterfit 2
-========================================================
-![center](figures/adexp_fit_allen_specid_325479788.png)
+![center w:800 h:500](figures/adexp_fit_allen_specid_325479788.png)
 
 ---
 
-Spot the fake part 3.
+Identify the counterfit 3
 ========================================================
 * High firing rate without adaptation
-![center](figures/28spikesB95.png)
+![center w:800 h:500](figures/28spikesB95.png)
 
 ---
+
+# Which features:
+**Lots of direct spike timing measurements**
+* Spikecount,mean_frequency, and adaptation_index
+* mean_AP_amplitude
+* min_voltage_between_spikes
+* minimum_voltage 
+* peak_voltage
+* voltage_base
+* Two AHP measuments
+---
+
 <!--
 ### Optimization Failure
 ![center](figures/current_voltage_breakdown.png)
@@ -250,35 +266,38 @@ and change the system. Tweek knobs on synthesizor.
 ![](error_signal.png)
 
 ---
+
+It is hard to see but generally spike time and spike shape conflict.
+![center](figures/IZHIkevich_fit_60Adexp_80.jpg)
+
 -->
 
 
 ### How good are Pre-Existing Fits?
-It is hard to see but generally spike time and spike shape conflict.
-![center](figures/IZHIkevich_fit_60Adexp_80.jpg)
-
----
-
-### Shape/ Spike Time Trade-off
+#### Shape/ Spike Time Trade-off
 * When Fitting to spike times, spike shape is traded off.
 Generally spike time and spike shape conflict.
-![center w:900 h:400](jtt.jpg)
+![center w:600 h:300](jtt.jpg)
 
 ---
 
 
 ### Does not Always Work
-#### What is Required for Successful Optimization? <!--fit--> 
+**What is Required for Successful Optimization?** <!--fit--> 
 4.1 What is Required for Successful Optimization?For optimization to both succeed and be useful, several criteria must be met:
-**Overall Speed**,**Smoothness of Error Function**, and **Relevance**
+**Overall Speed**,**Smoothness** of Error Function, and **Relevance**
 (Van Geit et al, 2007)
 
 ---
 <!--biological relevance is desirable, but it is not necessary-->
 
 ### Relevance 
-**Relevance:** The objective function should reflect fundamental and important properties of thed data that a good model would reproduce. Ie the model should not fit to noise in the data, or exclusively a small part of a waveform, such as exclusively getting a minor detail right like the depth of an AHP.
+**Relevance:** The objective function should reflect fundamental and important properties of the data that a good model would reproduce. 
 
+<!--Ie the model should not fit to noise in the data, or exclusively a small part of a waveform, such as exclusively getting a minor detail right like the depth of an AHP.-->
+
+* The RMSE is not relevant.
+* The Fourier Transform is not interpretable or relevant.
 ---
 
 
@@ -293,7 +312,8 @@ Each model evaluations are performed during the search, many of which may requir
 ### Fast Work Flow
 ![width:400px center](numba.png)
 
-If not for numba, I may still be waiting for results.
+If not for numba I may still be waiting for results, the type of results which may bring old assumptions into doubt.
+
 
 
 ![width:380px center](1_6HdiFOPS23OqCO4Id98CeQ.png)
@@ -306,6 +326,8 @@ If not for numba, I may still be waiting for results.
 
 * More about this later
 ---
+
+
 
 
 <!--
@@ -330,11 +352,24 @@ Show how some ingredients lead to bad recipeas.
 * 477 recordings Allen Institute Cell Types Database (primary visual cortex)
 * 41 recordings Blue Brain Portal (somatosensory cortex)
 
+---
+
 **Pre existing Cortical Models**:      
 * 972 models from NeuroML-DB
 Cortical Models:      
 * Total Combined Samples: 1498
 * 415 features of multi-spiking waveforms
+* Only 48 usable features
+
+---
+
+**Data and Models are united by A Common Experiment /virtual Experiment**:      
+![width:600px center](3step_protocol.png)
+
+---
+
+### Variance In Experiments Variance in Models
+![width:600px center](AHP_indices.png)
 
 ---
 
@@ -342,25 +377,144 @@ Cortical Models:
 ![width:600px center](spike_count.png)
 
 ---
-### Place holder
-![width:600px center](variance_sparse_pca.png)
+
+
+### Variance In Experiments Variance in Models
+![width:600px center](adaptation_index.png)
+
+---
+
+
+### What would this look Viewed at Once?
+* Here is a small chunk.
+![width:1050px center](hard_to_vis.png)
+
+---
+
+### What would this look Viewed at Once?
+* And Another chunk.
+
+![width:950px center](colorimshow.png)
+
+
+---
+### Low Dimensional Space
+![width:500px center](variance_sparse_pca.png)
+
+---
+
+### Visualization of Eigen Vector Loadings
+![center](figures/cortical_model_data_agreement_54_1.png)
+
+---
+
+### What are the dimensions?
+![width:600px center](figures/pc1pc2.png)
+
+---
 
 ### Existing Neuronal Modelling space is vast.
 Real data sets are vast.
 without comparing single models to single data.
 Analysis of variance models vs experiments.
 
+* Many of the indexs relate to when Neuron Experienced **peak voltages**, but also when where the **trough.** beginning and end times, so most of the indexs related to spike timing.
 
 
-### Part 2  Models and Data are Readily Distinguishable in a Reduced Dimension Space
+<!---
+|Feature Name|PC1|
+|:---:|:---:|---:|
+AP_end_indices_3.0x|0.2125187848394078|0.0
+AP_fall_indices_1.5x|0.24044566196436074|0.0
+AP_fall_indices_3.0x|0.21249945565465067|0.0
+AP_rise_indices_1.5x|0.240317621163258|0.0
+fast_trough_index_1.5x|0.0057053985408204505|0.3562230346687214
+fast_trough_index_3.0x|0.0|0.3514447575306276
+fast_trough_t_1.5x|0.2685361985803759|0.0
+fast_trough_t_3.0x|0.25205146577660975|0.0
+min_AHP_indices_1.5x|0.2405590926107427|0.0
+min_AHP_indices_3.0x|0.21226118997266166|0.0
+peak_index_1.5x|0.006739374730066852|0.35600560087959016
+peak_index_3.0x|0.0|0.35092602809984896
+peak_indices_1.5x|0.2409257389470201|0.0
+peak_indices_3.0x|0.21250230876077303|0.0
+peak_t_1.5x|0.2692595292661935|0.0
+peak_t_3.0x|0.25133956213673186|0.0
+peak_time_3.0x|0.212502308760773|0.0
+threshold_index_1.5x|0.006831936703568009|0.35596648121018953
+threshold_index_3.0x|0.0|0.3509021155260781
+threshold_t_1.5x|0.2692575177650672|0.0
+threshold_t_3.0x|0.25133025618807375|0.0
+upstroke_index_1.5x|0.0068126684268745305|0.3559758078582268
+upstroke_index_3.0x|0.0|0.35091232624961005
+upstroke_t_1.5x|0.26925982972152745|0.0
+upstroke_t_3.0x|0.25134113562573235|0.0
+voltage_after_stim_3.0x|-0.0022842243309869575|0.0
+--->
+
+---
+
+
+### Conclusions  Models and Data are Readily Distinguishable in a Reduced Dimension Space
 * 48 features.
 * Number of samples
 If models and experiments are still distinguishable it means
-1 Models need revision.
-2 Models need More specific optimization.
+* Models need revision.
+* Models need More specific optimization.
 * Since optimization conditions are fragile, if 2 is true. 
 Its sometimes hard to find the right approach.
 Models and Data are Readily Distinguishable in a Reduced Dimension Space
+
+---
+
+###
+![width:750px center](measure.png)
+
+---
+
+
+###
+![width:750px center](In_12_parameter_space.png)
+
+---
+
+###
+![width:750px center](mmm2.png)
+
+---
+
+How Often Does Significant Non Linearity Occur?
+========================================================
+![width:200px center](figures/reproduced_izhi.png)
+
+![width:250px center](agreement.png)
+![width:250px center](mmm2.png)
+
+---
+
+### Which Data Representation is best?.
+* In vitro and In silico neurons both have 
+significant non-linearities.
+![width:290px center](figures/eve_marder.png)
+
+---
+
+
+###
+* make two random models.
+* compute features. 
+* for each feature, you get the model1 value of the feauture (x1) and the model2 value of the feature (x2)
+$$ delta_{x} = x2-x1 $$
+x12 is the mean model.
+$$  (x_{12} - x1)/delta_{x} $$
+$$ between two points
+For the mean model, you also get a feature, call it x12.
+10:50
+Compute
+10:51
+This will be 0.5 when the mean model produces a feature exactly between the feautres of the two original models
+10:53
+Plot the distribution of these values across ~100 runs of this (each run you pick two random models)
 
 ---
 
@@ -372,9 +526,10 @@ Models and Data are Readily Distinguishable in a Reduced Dimension Space
 ---
 ### 
 
-# Alternatives to Eve Marder Dilemna
+# Part 3
+
 Fitting to experimental means can work but is not reliable.
-Depends on assumptions of data covariance.
+Depends on assumptions of experimental data variance.
 Alternative: 
 Fit to the whole trace of a single experiment.
 Sources of experimental error will not be averaged away
@@ -427,7 +582,7 @@ we consider two classes of reduced models in broad categories of experimental ce
 
 Mean model not equal to model mean
 =======================================================
-![center ](figures/mean_model_vs_mean_measurement.png)
+![width:400px center](figures/mean_model_vs_mean_measurement.png)
 
 ---
 
@@ -435,11 +590,6 @@ Mean model not equal to model mean
 ![center ](figures/skewed_distribution.png)
 -->
 
-reproduced_izhi.png
-========================================================
-![center ](figures/reproduced_izhi.png)
-
----
 
 <!--
 parameter_b_hopeless_surface2.png
@@ -451,11 +601,8 @@ parameter_b_hopeless_surface2.png
 
 
 
-Visualization of Eigen Vector Loadings
-========================================================
-![center](figures/cortical_model_data_agreement_54_1.png)
 
----
+
 
 ### Data Driven Optimization can be Fragile. 
 #### Optimization Needs Special Conditions
@@ -499,30 +646,31 @@ From human design supervision and testing
 ---
 
 ### High Dimensional Space
-![center](error_surface_pairs2.png)
+![width:550px center](figures/error_surface_pairs2.png)
 
 ---
 
 ### slice
 Small part of Error Hypervolume reveals a problem
 
-![center](slice_into_error_surface.png)
+![width:750px center](figures/slice_into_error_surface.png)
 
 ---
 
 ### Bad Recipe Ingredients A Closer Look:
 
-![center](figures/corrogations.png)
+
+![width:500px center](figures/corrogations.png)
 
 ---
 
 ###
-![center](rastrigrins_cross_section3.png)
+![width:370px center](rastrigrins_cross_section3.png)
 
 ### Slightly Bad Recipe Ingredients
 ### Error Surface Defects
 
-![center](figures/corrogated_surface_but_functional.png)
+![width:370px center](figures/corrogated_surface_but_functional.png)
 
 
 
@@ -532,7 +680,7 @@ Small part of Error Hypervolume reveals a problem
 
 ### Good recipe ingredients:
 
-![center](figures/friendly_error_surface.png)
+![width:300px center](figures/friendly_error_surface.png)
 
 ---
 
@@ -570,9 +718,6 @@ if you fit models to the mean.
 
 Marder showed this in conductance based models of the lobster somato-gastrion-ganglion neuron.
 -->
-![](figures/eve_marder.png)
-
-
 
 <!--friendly_error_surface.png
 ========================================================
@@ -596,10 +741,14 @@ Error Surface Defects
 
 Contributions to Science:
 =======
-* Recipe for fitting to Izhikevich and AdEx models to 
-* spike train shape+AP times
-* recipe for fitting Izhikevich and AdEx models to FI curves.
-* better understanding of model limits (shape is often incompatible with firing frequency current relationship.) Probably because of underlying representations of capacitance, and resistance (a,b), are more like fudge factors than anything else.
+* Recipe for fitting to Reduced models to 
+* spike train **shape**+AP times
+* recipe for fitting Reduced models to FI curves.
+* Improved understanding of model limits (shape is often incompatible with firing frequency current relationship.) 
+
+Probably because of underlying representations of capacitance, and resistance (a,b), are more like fudge factors than anything else.
+
+---
 
 Contributions to Science:
 =======
